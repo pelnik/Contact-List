@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactRow from './ContactRow';
 
 
 function ContactList({contacts}) {
@@ -15,11 +16,10 @@ function ContactList({contacts}) {
           {
             contacts.map((contact, idx) => {
               return (
-              <tr key={`contact table row: ${idx}`}>
-                <td>{contact.name}</td>
-                <td>{contact.phone}</td>
-                <td>{contact.email}</td>
-              </tr>
+                <ContactRow 
+                  key={`contact table row: ${idx}`}
+                  contact={contact}
+                />
               )
             })
           }
