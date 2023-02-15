@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
-import dummyContacts from '../dummyData/index.js';
 import ContactList from './ContactList.jsx';
 
-console.log(dummyContacts)
+
 
 const Main = () => {
-  const [contacts, setContacts] = useState(dummyContacts);
+  const [contacts, setContacts] = useState([]);
+  const [selectedContact, setSelectedContact] = useState({});
+
+  async function getContacts() {
+    try {
+      const users = await fetch('http://jsonplace-univclone.herokuapp.com/users');
+      const usersJSON = await users.json();
+
+      setContacts(usersJSON);
+    } catch (err) {
+      console.err(err);
+    }
+  }
+
+  if (contacts.length === 0) {
+    getContacts();
+  }
 
   return (
     <div id="main">
