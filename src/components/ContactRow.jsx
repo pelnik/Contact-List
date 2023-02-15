@@ -1,9 +1,11 @@
 import React from 'react';
 
 
-function ContactRow({contact}) {
+function ContactRow({contact, selectContact}) {
   return (
-    <tr>
+    <tr onClick={() => {
+      selectContact(contact.id)
+    }}>
       <td>{contact.name}</td>
       <td>{contact.phone}</td>
       <td>{contact.email}</td>

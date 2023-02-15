@@ -2,7 +2,7 @@ import React from 'react';
 import ContactRow from './ContactRow';
 
 
-function ContactList({contacts}) {
+function ContactList({contacts, selectContact}) {
 
   return (
     <div>
@@ -19,6 +19,7 @@ function ContactList({contacts}) {
                 <ContactRow 
                   key={`contact table row: ${idx}`}
                   contact={contact}
+                  selectContact={selectContact}
                 />
               )
             })
