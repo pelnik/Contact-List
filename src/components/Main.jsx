@@ -20,10 +20,17 @@ const Main = () => {
     }
   }
 
-  async function selectContact(contactId) {
+  async function selectContact(contactId, favoriteObject) {
     const response = await fetch(`http://jsonplace-univclone.herokuapp.com/users/${contactId}`);
     const user = await response.json();
+    let favorite = null;
 
+    if (favoriteObject !== undefined) {
+      favorite = favoriteObject.favorite;
+    }
+
+    user.favorite = favorite;
+    
     setSelectedContact(user);
   }
 
@@ -45,7 +52,8 @@ const Main = () => {
         selectedContact.id !== undefined ?
         <SingleContact
           selectedContact={selectedContact}
-          handleClick={clearSelectedContact}/> :
+          handleClick={clearSelectedContact}
+          selectContact={selectContact}/> :
         <ContactList
           contacts={contacts}
           selectContact={selectContact}

@@ -1,13 +1,18 @@
-import React from 'react';
+import React from 'react'
+import Favorite from './Favorite.jsx'
 
 
-function SingleContact({selectedContact, handleClick}) {
+function SingleContact({selectedContact, handleClick, selectContact}) {
   return (
-    <div id="single-contact" onClick={handleClick}>
+    <div id="single-contact">
       <div id="contact-info">
           <p><b>{`Name: ${selectedContact.name}`}</b> </p>
           <p><b>{`Email: ${selectedContact.email}`}</b> </p>
           <p><b>{`Phone: ${selectedContact.phone}`}</b> </p>
+          <Favorite
+            selectContact={selectContact}
+            contact={selectedContact}
+          />
           <div>
               <b>{`Address:`}</b>
               <p>

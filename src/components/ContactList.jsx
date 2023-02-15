@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactRow from './ContactRow';
+import ContactRow from './ContactRow.jsx';
 
 
 function ContactList({contacts, selectContact}) {
